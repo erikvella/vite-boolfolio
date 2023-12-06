@@ -2,39 +2,59 @@
 import axios from 'axios';
 import {store} from './data/store';
 import BlogComponent from './components/BlogComponent.vue';
+import Loader from './components/partials/Loader.vue';
+import Navigator from './components/partials/Navigator.vue';
 
 
 export default{
   name : 'App',
   components:{
     BlogComponent,
+    Loader,
+    Navigator
+
    
 },
 
   data(){
     return{
-      titolo : 'I miei progetti'
+     isLoaded : false,
+      store,
+      paginator : {
+        links : [],
+        firstPageUrl : '',
+        lastPageUrl : '',
+
+      }
     }
   },
 
   methods:{
-    getApi(){
-      axios.get(store.apiUrl + 'projects')
+    getApi(endpoint){
+      axios.get(endpoint)
       .then(results =>{
-        console.log(results.data);
-        store.projects = results.data;
+        this.isLoaded = true;
+        store.projects = results.data.data;
+        this.paginator.links = results.data.links;
+    
+        
       })
     }
   },
   mounted(){
-    this.getApi();
+    this.getApi(store.apiUrl + 'projects');
   }
 }
 </script>
 
 <template>
   <div class="container">
-    <BlogComponent />
+    <loader v-if="!isLoaded" />
+    <div v-else >
+      <BlogComponent />
+    <Navigator :paginator="paginator" @callApi="getApi" />
+    </div>
+    
   </div>
 </template>
 

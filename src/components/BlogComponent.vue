@@ -20,7 +20,7 @@ export default {
 
 <template>
   <div>
-    <h1>I miei progetti!</h1>
+    <h1>I miei progetti!!!</h1>
     <ul>
      <li v-for="project in store.projects" :key="project.id">
           <p>{{ project.title }}</p>
