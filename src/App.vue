@@ -1,19 +1,28 @@
 <script>
 import axios from 'axios';
 import {store} from './data/store';
+import BlogComponent from './components/BlogComponent.vue';
+
 
 export default{
   name : 'App',
+  components:{
+    BlogComponent,
+   
+},
+
   data(){
     return{
-      titolo : 'Bentornati su vue'
+      titolo : 'I miei progetti'
     }
   },
+
   methods:{
     getApi(){
       axios.get(store.apiUrl + 'projects')
       .then(results =>{
         console.log(results.data);
+        store.projects = results.data;
       })
     }
   },
@@ -25,7 +34,7 @@ export default{
 
 <template>
   <div class="container">
-    <h1>{{ titolo }}</h1>
+    <BlogComponent />
   </div>
 </template>
 
