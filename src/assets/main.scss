@@ -1,0 +1,28 @@
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/900.css';
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: rgb(98, 1, 1);
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid white;
+  padding: 20px;
+  max-height: 90%;
+  overflow: auto;
+}
