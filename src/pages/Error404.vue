@@ -1,8 +1,6 @@
 <script>
-import Header from './components/partials/Header.vue'
-
 export default{
-  name : 'App',
+  name : 'Error404',
 
   data(){
     return{
@@ -10,9 +8,7 @@ export default{
     }
   },
 
-  components:{
-    Header
-  },
+  components:{},
   methods:{},
   mounted(){},
   computed:{}
@@ -22,11 +18,7 @@ export default{
 
 <template>
   <div>
-    <Header />
-    <div class="main-wrapper">
-      <RouterView />
-
-    </div>
+    <h1>Error404 !!! PAGE NOT FOUND</h1>
   </div>
 </template>
 
