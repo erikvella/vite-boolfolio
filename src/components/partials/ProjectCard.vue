@@ -21,7 +21,7 @@ export default {
 
 <template>
    <div class="card" v-for="project in store.projects" :key="project.id">
-      <h3>Nome del progetto: {{ project.title }}</h3>
+      <h3><router-link :to="{name: 'projectDetail' , params:{slug: project.slug}}" class="title">Nome del progetto: {{ project.title }}</router-link></h3>
       <em>Tipologia: {{ project.type.name }}</em>
       <h4>Tecnologie usate:</h4>
       <h4 v-for="tecnology in project.tecnologies" :key="tecnology.id"> {{ tecnology.name }}</h4>
@@ -34,4 +34,18 @@ export default {
   color: black;
   border: 1px solid rgb(249, 249, 249);
 }
+
+.title{
+        text-decoration: none;
+        color: rgb(3, 3, 3);
+        &.active{
+        
+          text-decoration: underline;
+        }
+        &:hover{
+          text-transform: uppercase;
+          text-decoration: underline;
+      
+        }
+      }
 </style>

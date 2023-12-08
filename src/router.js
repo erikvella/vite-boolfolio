@@ -3,10 +3,14 @@ import { createRouter , createWebHistory } from "vue-router";
 // importo i vari componenti delle pagine
 import Home from './pages/Home.vue';
 import About from './pages/About.vue';
+import Blog from './pages/Blog.vue';
+import Contacts from './pages/Contacts.vue';
 import Error404 from './pages/Error404.vue';
+import ProjectDetail from './pages/ProjectDetail.vue';
 
 const router = createRouter({
   history : createWebHistory(),
+  linkExactActiveClass : 'active',
 
   routes : [
     {
@@ -18,6 +22,22 @@ const router = createRouter({
       path : '/chi-siamo',
       name : 'about',
       component : About
+    },
+    {
+      path : '/blog',
+      name : 'blog',
+      component : Blog
+    },
+    {
+      path : '/contatti',
+      name : 'contacts',
+      component : Contacts
+    },
+    {
+      // rotta con elemento dinamico come parametro (slug)
+      path : '/dettaglio-progetto/:slug',
+      name : 'projectDetail',
+      component : ProjectDetail
     },
 
     // rotta 404 da mettere come ultima rotta

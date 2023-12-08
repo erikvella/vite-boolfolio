@@ -1,13 +1,13 @@
 <script>
 import axios from 'axios';
-import {store} from './data/store';
-import BlogComponent from './components/BlogComponent.vue';
-import Loader from './components/partials/Loader.vue';
-import Navigator from './components/partials/Navigator.vue';
+import {store} from '../data/store';
+import BlogComponent from '../components/BlogComponent.vue';
+import Loader from '../components/partials/Loader.vue';
+import Navigator from '../components/partials/Navigator.vue';
 
 
 export default{
-  name : 'App',
+  name : 'Blog',
   components:{
     BlogComponent,
     Loader,
@@ -48,14 +48,14 @@ export default{
 </script>
 
 <template>
-  <div class="container">
+
     <loader v-if="!isLoaded" />
     <div v-else >
       <BlogComponent />
     <Navigator :paginator="paginator" @callApi="getApi" />
     </div>
     
-  </div>
+  
 </template>
 
 <style lang="scss">

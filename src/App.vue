@@ -24,7 +24,10 @@ export default{
   <div>
     <Header />
     <div class="main-wrapper">
-      <RouterView />
+      <div class="container">
+        <RouterView />
+
+      </div>
 
     </div>
   </div>

@@ -26,6 +26,12 @@ export default{
         <li>
           <router-link :to="{name: 'about'}">chi siamo</router-link>
         </li>
+        <li>
+          <router-link :to="{name: 'blog'}">blog</router-link>
+        </li>
+        <li>
+          <router-link :to="{name: 'contacts'}">contatti</router-link>
+        </li>
       </ul>
     </nav>
   </header>
@@ -44,6 +50,10 @@ text-align: center;
       a{
         text-decoration: none;
         color: white;
+        &.active{
+          color: yellow;
+          text-decoration: underline;
+        }
         &:hover{
           text-transform: uppercase;
           text-decoration: underline;
