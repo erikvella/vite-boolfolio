@@ -8,7 +8,8 @@ export default{
   data(){
     return{
        project : {},
-       isLoaded: false
+       isLoaded: false,
+      
     }
   },
 
@@ -20,8 +21,13 @@ export default{
 
       axios.get(store.apiUrl + 'projects/get-project/' + slug) 
            .then(res=> {
+            if(!res.data.success){
+              // se l'API restituisce il fallmineto della chiamata reindirizzo alla pagina 404
+              this.$router.push({name: 'error-404'});
+            }
              this.isLoaded = true;
-             this.project = res.data;
+             this.project = res.data.project;
+             
            })
     }
   },
@@ -30,7 +36,7 @@ export default{
   },
   computed:{
     tecnologiesList(){
-      return this.project.tecnologies.map(tecnology => tecnology.name).join(', ') || 'NO TECNOLOGIES';
+      return this.project.tecnologies?.map(tecnology => tecnology.name).join(', ') || 'NO TECNOLOGIES';
     },
     formattedDate(){
       const d = new Date(this.project.date);

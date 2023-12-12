@@ -44,7 +44,8 @@ const router = createRouter({
     // '/:pathMatch(.*)*' <---- significa tutte le rotte possibili , ed è per questo che intecetta tutte le rotte sbagliate ad esclusione di quelle precedenti
     {
       path : '/:pathMatch(.*)*',
-      // non mettiamo il name per il 404
+      // non mettiamo il name per il 404 , oppure lo mettiamo per reindirizzare in casi particolare (vedasi la chiamata all'API secondo lo slug)
+      name : 'error-404',
       component : Error404
     },
   ]
