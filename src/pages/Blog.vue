@@ -4,6 +4,7 @@ import {store} from '../data/store';
 import BlogComponent from '../components/BlogComponent.vue';
 import Loader from '../components/partials/Loader.vue';
 import Navigator from '../components/partials/Navigator.vue';
+import BlogAside from '../components/partials/BlogAside.vue';
 
 
 export default{
@@ -11,7 +12,8 @@ export default{
   components:{
     BlogComponent,
     Loader,
-    Navigator
+    Navigator,
+    BlogAside,
 
    
 },
@@ -31,18 +33,30 @@ export default{
 
   methods:{
     getApi(endpoint){
-      axios.get(endpoint)
+      axios.get(store.apiUrl + endpoint)
       .then(results =>{
-        this.isLoaded = true;
-        store.projects = results.data.data;
-        this.paginator.links = results.data.links;
+        switch(endpoint){
+          case 'types':
+          store.types = results.data;
+          break;
+          case 'tecnologies':
+          store.tecnologies = results.data;
+          break;
+          default:
+          this.isLoaded = true;
+          store.projects = results.data.data;
+          this.paginator.links = results.data.links;
+        }
+        
     
         
       })
     }
   },
   mounted(){
-    this.getApi(store.apiUrl + 'projects');
+    this.getApi('projects');
+    this.getApi('types');
+    this.getApi('tecnologies');
   }
 }
 </script>
@@ -52,12 +66,16 @@ export default{
     <loader v-if="!isLoaded" />
     <div v-else >
       <BlogComponent />
+     
     <Navigator :paginator="paginator" @callApi="getApi" />
+
+   <BlogAside/>
     </div>
     
   
+  
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

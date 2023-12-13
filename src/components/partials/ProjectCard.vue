@@ -43,7 +43,7 @@ export default {
           text-decoration: underline;
         }
         &:hover{
-          text-transform: uppercase;
+          color: rgb(82, 79, 79);
           text-decoration: underline;
       
         }

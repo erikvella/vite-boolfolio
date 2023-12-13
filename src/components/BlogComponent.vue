@@ -27,6 +27,7 @@ export default {
     
    <ProjectCard/>
   </div>
+  
 </template>
 
 <style lang="scss" scoped>

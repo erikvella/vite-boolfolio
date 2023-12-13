@@ -58,16 +58,23 @@ export default{
   <Loader v-if="!isLoaded" />
   <div v-else>
     <h1>Dettagli del progetto</h1>
-    <h2>Nome del progetto: : {{ project.title }}</h2>
+    <h2>Nome del progetto: : {{ project?.title }}</h2>
     <em>Data di creazione : {{ formattedDate }}</em>
     <p>Tipologia progetto : {{ project.type?.name || ' - '}}</p>
     <p>Tecnologie usate : {{ tecnologiesList }}</p>
     <div>
-      foto (se c'è)
+      <img :src="project?.image" :alt="project?.title">
     </div>
+    <em>{{ project?.image_original_name }}</em>
     <p>{{ project.text }}</p>
   </div>
+
+
 </template>
 
 <style lang="scss" scoped>
+img{
+  max-width: 600px;
+}
+
 </style>
