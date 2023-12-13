@@ -7,6 +7,8 @@ import Blog from './pages/Blog.vue';
 import Contacts from './pages/Contacts.vue';
 import Error404 from './pages/Error404.vue';
 import ProjectDetail from './pages/ProjectDetail.vue';
+import ProjectsType from './pages/ProjectsType.vue';
+import ProjectsTecnology from './pages/ProjectsTecnology.vue';
 
 const router = createRouter({
   history : createWebHistory(),
@@ -38,6 +40,18 @@ const router = createRouter({
       path : '/dettaglio-progetto/:slug',
       name : 'projectDetail',
       component : ProjectDetail
+    },
+    {
+      // rotta con elemento dinamico come parametro (slug)
+      path : '/projects-type/:type_slug',
+      name : 'projectsType',
+      component : ProjectsType
+    },
+    {
+      // rotta con elemento dinamico come parametro (slug)
+      path : '/projects-tecnology/:tecnology_slug',
+      name : 'projectsTecnology',
+      component : ProjectsTecnology
     },
 
     // rotta 404 da mettere come ultima rotta

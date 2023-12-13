@@ -65,11 +65,12 @@ export default{
 
     <loader v-if="!isLoaded" />
     <div v-else >
+      <BlogAside/>
+
       <BlogComponent />
      
-    <Navigator :paginator="paginator" @callApi="getApi" />
+       <Navigator :paginator="paginator" @callApi="getApi" />
 
-   <BlogAside/>
     </div>
     
   
