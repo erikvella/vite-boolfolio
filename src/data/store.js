@@ -11,6 +11,6 @@ export const store = reactive({
     lastPageUrl : '',
   },
     isLoaded : false,
-    titleBlog : 'Elenco di tutti i progetti',
+    titleBlog : '',
 
 });

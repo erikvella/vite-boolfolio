@@ -49,6 +49,7 @@ export default{
           store.isLoaded = true;
           store.projects = results.data.data;
           store.paginator.links = results.data.links;
+          store.titleBlog = 'Elenco di tutti i progetti';
           
         }
         
