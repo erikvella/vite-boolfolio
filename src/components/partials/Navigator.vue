@@ -15,9 +15,9 @@ export default {
   components:{},
   methods:{
     callApi(linkUrl){
+      linkUrl = linkUrl.substring(26);
       this.$emit('callApi' , linkUrl);
 
-      linkUrl = linkUrl.substring(26);
     
       console.log(linkUrl);
     
