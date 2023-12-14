@@ -33,8 +33,10 @@ export default{
 
   methods:{
     getApi(endpoint){
+    
       axios.get(store.apiUrl + endpoint)
       .then(results =>{
+  
         switch(endpoint){
           case 'types':
           store.types = results.data;
@@ -46,6 +48,7 @@ export default{
           this.isLoaded = true;
           store.projects = results.data.data;
           this.paginator.links = results.data.links;
+          
         }
         
     

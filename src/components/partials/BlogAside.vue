@@ -19,7 +19,7 @@
       <h2>Filtra progetti per tecnologia</h2>
       <ul>
         <li v-for="tecnology in store.tecnologies" :key="tecnology.id">
-        <router-link class="routes" :to="{name:'projectsTecnology' , params:{tecnology_slug: tecnology.slug}}">{{ tecnology.name }}</router-link>
+        <router-link class="routes" :to="{name:'projectsTypeTecnology' , params:{slug: tecnology.slug , topic:'tecnology'}}">{{ tecnology.name }}</router-link>
         </li>
       </ul>
     </div>
@@ -30,7 +30,7 @@
         <!-- ho ciclato "tipo" anzichè "type" perchè sennò mi sputtana i tag con i colori (provare per credere) -->
         <!-- <li v-for="type in store.types" :key="type.id">{{ type.name }}</li> -->
         <li v-for="tipo in store.types" :key="tipo.id">
-          <router-link class="routes" :to="{name:'projectsType' , params:{type_slug: tipo.slug}}">{{ tipo.name }}</router-link>
+          <router-link class="routes" :to="{name:'projectsTypeTecnology' , params:{slug: tipo.slug , topic:'type'}}">{{ tipo.name }}</router-link>
         </li>
       </ul>
     </div>

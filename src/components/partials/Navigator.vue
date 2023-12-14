@@ -17,6 +17,10 @@ export default {
     callApi(linkUrl){
       this.$emit('callApi' , linkUrl);
 
+      linkUrl = linkUrl.substring(26);
+    
+      console.log(linkUrl);
+    
     }
   },
   mounted(){},

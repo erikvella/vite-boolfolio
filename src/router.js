@@ -7,8 +7,7 @@ import Blog from './pages/Blog.vue';
 import Contacts from './pages/Contacts.vue';
 import Error404 from './pages/Error404.vue';
 import ProjectDetail from './pages/ProjectDetail.vue';
-import ProjectsType from './pages/ProjectsType.vue';
-import ProjectsTecnology from './pages/ProjectsTecnology.vue';
+import ProjectsTypeTecnology from './pages/ProjectsTypeTecnology.vue';
 
 const router = createRouter({
   history : createWebHistory(),
@@ -43,16 +42,11 @@ const router = createRouter({
     },
     {
       // rotta con elemento dinamico come parametro (slug)
-      path : '/projects-type/:type_slug',
-      name : 'projectsType',
-      component : ProjectsType
+      path : '/projects-type-tecnology/:slug/:topic',
+      name : 'projectsTypeTecnology',
+      component : ProjectsTypeTecnology
     },
-    {
-      // rotta con elemento dinamico come parametro (slug)
-      path : '/projects-tecnology/:tecnology_slug',
-      name : 'projectsTecnology',
-      component : ProjectsTecnology
-    },
+  
 
     // rotta 404 da mettere come ultima rotta
     // '/:pathMatch(.*)*' <---- significa tutte le rotte possibili , ed è per questo che intecetta tutte le rotte sbagliate ad esclusione di quelle precedenti
