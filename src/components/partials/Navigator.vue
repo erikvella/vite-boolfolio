@@ -19,7 +19,7 @@ export default {
       this.$emit('callApi' , linkUrl);
 
     
-      console.log(linkUrl);
+    
     
     }
   },

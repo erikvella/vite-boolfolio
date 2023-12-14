@@ -15,12 +15,13 @@ export default{
   methods:{
     getApi(){
       store.isLoaded = false;
-      axios.get(store.apiUrl + 'search/' + this.tosearch)
+      const endpoint = (this.tosearch.length > 0) ? store.apiUrl + 'search/' + this.tosearch : store.apiUrl + 'projects/';
+      axios.get(endpoint)
            .then(results => {
             store.isLoaded = true;
             store.projects = results.data.data;
             store.paginator.links = results.data.links;
-            store.titleBlog = 'Risultati della ricerca per: ' + this.tosearch ;
+            store.titleBlog = (this.tosearch.length > 0) ? 'Risultati della ricerca per: ' + this.tosearch : 'Elenco di tutti i progetti';
             this.tosearch = '';
            })
     }
