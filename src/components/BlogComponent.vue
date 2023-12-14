@@ -6,6 +6,7 @@ export default {
   name : 'BlogComponent',
   data(){
     return{
+      
       store
     }
     
@@ -23,7 +24,7 @@ export default {
 
 <template>
   <div>
-    <h1>I miei progetti!!!</h1>
+    <h1>{{ store.titleBlog }}</h1>
     
    <ProjectCard/>
   </div>

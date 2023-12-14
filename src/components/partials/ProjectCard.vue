@@ -20,7 +20,8 @@ export default {
 
 
 <template>
-   <div class="card" v-for="project in store.projects" :key="project.id">
+  <h2 v-if="store.projects.length == 0">Nessun progetto trovato!</h2>
+   <div v-else class="card" v-for="project in store.projects" :key="project.id">
       <h3><router-link :to="{name: 'projectDetail' , params:{slug: project.slug}}" class="title">Nome del progetto: {{ project.title }}</router-link></h3>
       <em>Tipologia: {{ project.type.name }}</em>
       <h4>Tecnologie usate:</h4>

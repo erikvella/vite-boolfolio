@@ -20,6 +20,7 @@ export default{
 
   data(){
     return{
+     
      isLoaded : false,
       store,
       paginator : {
@@ -33,7 +34,7 @@ export default{
 
   methods:{
     getApi(endpoint){
-    
+      store.isLoaded = false;
       axios.get(store.apiUrl + endpoint)
       .then(results =>{
   
@@ -45,9 +46,9 @@ export default{
           store.tecnologies = results.data;
           break;
           default:
-          this.isLoaded = true;
+          store.isLoaded = true;
           store.projects = results.data.data;
-          this.paginator.links = results.data.links;
+          store.paginator.links = results.data.links;
           
         }
         
@@ -66,13 +67,13 @@ export default{
 
 <template>
 
-    <loader v-if="!isLoaded" />
+    <loader v-if="!store.isLoaded" />
     <div v-else >
       <BlogAside/>
 
       <BlogComponent />
      
-       <Navigator :paginator="paginator" @callApi="getApi" />
+       <Navigator v-if="store.projects.length > 0" :paginator="store.paginator" @callApi="getApi" />
 
     </div>
     

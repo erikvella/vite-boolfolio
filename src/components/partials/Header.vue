@@ -1,15 +1,30 @@
 <script>
+import axios from 'axios';
+import {store} from '../../data/store'
 export default{
   name : 'Header',
 
   data(){
     return{
-
+      store,
+      tosearch: ''
     }
   },
 
   components:{},
-  methods:{},
+  methods:{
+    getApi(){
+      store.isLoaded = false;
+      axios.get(store.apiUrl + 'search/' + this.tosearch)
+           .then(results => {
+            store.isLoaded = true;
+            store.projects = results.data.data;
+            store.paginator.links = results.data.links;
+            store.titleBlog = 'Risultati della ricerca per: ' + this.tosearch ;
+            this.tosearch = '';
+           })
+    }
+  },
   mounted(){},
   computed:{}
 }
@@ -17,7 +32,7 @@ export default{
 
 
 <template>
-  <header>
+  <header class="d-flex">
     <nav>
       <ul>
         <li>
@@ -34,14 +49,20 @@ export default{
         </li>
       </ul>
     </nav>
+
+    <div class="form">
+      <input type="text" placeholder="Cerca" v-model.trim="tosearch" @keyup.enter="getApi">
+    </div>
   </header>
 </template>
 
 <style lang="scss" scoped>
 header{
+justify-content: center;
 position: fixed;
 width: 100%;
 text-align: center;
+align-items: center;
   ul{
     list-style: none;
     li{
@@ -59,6 +80,14 @@ text-align: center;
           text-decoration: underline;
         }
       }
+    }
+  }
+  .form{
+    margin: 15px;
+    input{
+      padding: 5px;
+      border-radius: 8px ;
+      
     }
   }
 }
