@@ -13,7 +13,7 @@ export default{
   components:{},
   methods:{
     getApi(slug){
-      axios.get(store.apiUrl + 'projects-type/' + slug)
+      axios.get(store.apiUrl + 'projects-by-type/' + slug)
            .then(res=> {
             console.log(res.data);
            })
