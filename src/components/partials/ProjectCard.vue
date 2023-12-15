@@ -24,6 +24,8 @@ export default {
    <div v-else class="card" v-for="project in store.projects" :key="project.id">
       <h3><router-link :to="{name: 'projectDetail' , params:{slug: project.slug}}" class="title">Nome del progetto: {{ project.title }}</router-link></h3>
       <em>Tipologia: {{ project.type.name }}</em>
+      <br>
+      <em>by {{ project.user.name }}</em>
       <h4>Tecnologie usate:</h4>
       <h4 v-for="tecnology in project.tecnologies" :key="tecnology.id"> {{ tecnology.name }}</h4>
     </div>
