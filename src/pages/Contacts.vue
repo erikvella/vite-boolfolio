@@ -1,4 +1,5 @@
 <script>
+import ContactForm from '@/components/ContactForm.vue';
 export default{
   name : 'Contacts',
 
@@ -8,7 +9,9 @@ export default{
     }
   },
 
-  components:{},
+  components:{
+    ContactForm
+  },
   methods:{},
   mounted(){},
   computed:{}
@@ -19,7 +22,7 @@ export default{
 <template>
   <div>
     <h1>Contatti</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis repudiandae repellat voluptate voluptatibus cum id nisi, est debitis optio ut perspiciatis odit culpa iusto beatae aut ex laboriosam molestiae similique?</p>
+    <ContactForm />
   </div>
 </template>
 
