@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import {store} from '../data/store';
+import Loader from './partials/Loader.vue';
 export default {
   name : 'ContactForm',
   data(){
@@ -9,6 +10,7 @@ export default {
       email: '',
       message: '',
       success: false,
+      isLoading: false,
       errors:{
         name:[],
         email:[],
@@ -18,9 +20,11 @@ export default {
     
   },
   components:{
+    Loader
   },
   methods:{
     sendForm(){
+      this.isLoading = true;
       const data = {
         name: this.name,
         email: this.email,
@@ -28,6 +32,7 @@ export default {
       }
       axios.post(store.apiUrl + 'send-email' , data)
            .then(response =>{
+            this.isLoading = false;
             console.log(response.data);
             this.success = response.data.success;
             if(!this.success){
@@ -50,7 +55,8 @@ export default {
   <div>
     <h1>Inviaci un messaggio:</h1>
     <form v-if="!success" @submit.prevent="sendForm()">
-      <div>
+      <div v-if="!isLoading">
+        <div>
         <label for="name">Nome</label>
         <input v-model="name" type="text" name="name" id="name">
         <p v-for="error in errors.name" class="error">{{ error }}</p>
@@ -68,6 +74,10 @@ export default {
       <div>
         <button type="submit" class="btn btn-check ">Invia</button>
       </div>
+      </div>
+
+      <Loader v-else />
+     
     </form>
 
     <div v-else>Email inviata correttamente!</div>
