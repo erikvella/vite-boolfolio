@@ -25,7 +25,7 @@ export default {
       axios.post(store.apiUrl + 'send-email' , data)
            .then(response =>{
             console.log(response.data);
-            this.success = response.data.success;
+            // this.success = response.data.success;
            })
            .catch(error =>{
             console.log(error);
