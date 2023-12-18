@@ -16,7 +16,6 @@ export default {
   },
   methods:{
     sendForm(){
-      console.log('Invio avvenuto!!!!!');
       const data = {
         name: this.name,
         email: this.email,
