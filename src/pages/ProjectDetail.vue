@@ -59,7 +59,7 @@ export default{
   <div v-else>
     <h1>Dettagli del progetto</h1>
     <h2>Nome del progetto: : {{ project?.title }}</h2>
-    <em>by {{ project.user?.name }}</em>
+    <em>by {{ project.user.name }}</em>
     <br>
     <em>Data di creazione : {{ formattedDate }}</em>
     <p>Tipologia progetto : {{ project.type?.name || ' - '}}</p>

@@ -8,7 +8,12 @@ export default {
       name: '',
       email: '',
       message: '',
-      success: true,
+      success: false,
+      errors:{
+        name:[],
+        email:[],
+        messages:[]
+      }
     }
     
   },
@@ -24,7 +29,10 @@ export default {
       axios.post(store.apiUrl + 'send-email' , data)
            .then(response =>{
             console.log(response.data);
-            // this.success = response.data.success;
+            this.success = response.data.success;
+            if(!this.success){
+              this.errors = response.data.errors;
+            }
            })
            .catch(error =>{
             console.log(error);
@@ -40,25 +48,29 @@ export default {
 
 <template>
   <div>
-    <h1>Inviaci un messaggio</h1>
-    <form @submit.prevent="sendForm()">
+    <h1>Inviaci un messaggio:</h1>
+    <form v-if="!success" @submit.prevent="sendForm()">
       <div>
         <label for="name">Nome</label>
         <input v-model="name" type="text" name="name" id="name">
-        <p v-if="!success" class="error">errore</p>
+        <p v-for="error in errors.name" class="error">{{ error }}</p>
       </div>
       <div>
         <label for="email">Email</label>
         <input v-model="email" type="text" name="email" id="email">
+        <p v-for="error in errors.email" class="error">{{ error }}</p>
       </div>
       <div>
         <label for="message">Messaggio</label>
         <textarea v-model="message" name="message" id="message" cols="30" rows="3"></textarea>
+        <p v-for="error in errors.message" class="error">{{ error }}</p>
       </div>
       <div>
         <button type="submit" class="btn btn-check ">Invia</button>
       </div>
     </form>
+
+    <div v-else>Email inviata correttamente!</div>
   </div>
   
 </template>
